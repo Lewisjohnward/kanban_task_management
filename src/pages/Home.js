@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import Header from "../components/Header/Header"
 import NavBar from "../components/NavBar/NavBar"
+import TaskGrid from "../components/TaskGrid/TaskGrid"
+import data from "../data/dummy.js"
 
 
 const Container = styled.div`
@@ -18,13 +20,15 @@ const Main = styled.div`
 const Box = styled.div`
     background: ${({theme}) => theme.darkgray};
 `
+
  
 const Home = () => {
     return (
         <Container>
             <NavBar />
             <Main>
-                <Header />
+                <Header data={data[0]}/>
+                <TaskGrid data={data[0]}/>
             </Main>
         </Container>
 

@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         font-family: 'Lato', sans-serif;
-        //background: ${({theme}) => theme.darkgray};
+        background: ${({theme}) => theme.darkgray};
         color: ${({theme}) => theme.white};
     }
 `

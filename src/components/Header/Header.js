@@ -5,9 +5,9 @@ const Container = styled.div`
 `
 
 
-const Header = () => {
+const Header = ({data}) => {
     return (
-        <Container>Platform Launch</Container>
+        <Container>{data.board}</Container>
     )
 }
 
