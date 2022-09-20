@@ -1,8 +1,7 @@
-import './App.css';
-
 function App() {
   return (
     <div>
+        WELCOME TO MY KANBAN WEBSITE! A WORK IN PROGRESS
     </div>
   );
 }
