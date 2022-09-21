@@ -4,6 +4,7 @@ const data = [
         columns: [
             {
                 column: "todo",
+                color: "#f76707",
                 tasks: [
                     {
                         task: {
@@ -40,6 +41,7 @@ const data = [
             },
             {
                 column: "another column",
+                color: "#07e3f7",
                 tasks: [
                     {
                         task: {

@@ -17,10 +17,15 @@ const AddNewColumn = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    padding: 0px 20px;
+    padding: 0px 60px;
 
     background: ${({theme}) => theme.lightgray};
     border-radius: 5px;
+
+    &:hover{
+        cursor: pointer;
+        outline: 1px solid ${({theme}) => theme.whiteOpac};
+    }
 `
 
 const Text = styled.div`
@@ -45,10 +50,39 @@ const TaskGrid = ({data}) => {
 const ColumnStyled = styled.div`
 `
 
+const Dot = styled.div`
+    width: 12px;
+    height: 12px;
+    border-radius: 8px;
+    background: ${({color}) => color};
+`
+
+const ColumnHeader = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    margin-bottom: 10px;
+
+    > * {
+        margin-right: 10px;
+    }
+`
+
+const ColumnName = styled.div`
+    text-transform: uppercase;
+    opacity: 0.6;
+    letter-spacing: 5px;
+`
+
 const Column = ({column}) => {
+    const tasks = column.tasks.length
     return (
         <ColumnStyled>
-            {column.column}
+            <ColumnHeader>
+                <Dot color={column.color}/>
+                <ColumnName>{column.column}</ColumnName>
+            </ColumnHeader>
             {column.tasks.map(task => <Task task={task} />)}
         </ColumnStyled>
     )
@@ -57,7 +91,7 @@ const Column = ({column}) => {
 
 const TaskStyled = styled.div`
     background: ${({theme}) => theme.lightgray};
-    padding: 8px 35px;
+    padding: 8px 60px;
     border-radius: 10px;
     margin-bottom: 10px;
 
@@ -68,14 +102,15 @@ const TaskStyled = styled.div`
 `
 
 const TaskName =  styled.h2`
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-bottom: 5px;
 `
 
 const Subtasks = styled.h4`
     font-size: 0.8rem;
-    font-weight: 300;
-    opacity: 0.7;
+    font-weight: 800;
+    opacity: 0.3;
 `
 
 const Task = ({task}) => {

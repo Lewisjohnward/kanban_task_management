@@ -5,13 +5,14 @@ import {AiFillEyeInvisible} from "react-icons/ai"
 
 
 const Wrapper = styled.div`
-    width: 20%;
+    width: 300px;
     background: ${({theme}) => theme.lightgray};
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 0px;
-    border-right: 1px solid ${({theme}) => theme.lightergray};
+    border-right: 1px solid ${({theme}) => theme.whiteOpac};
 `
 
 const Container = styled.div`

@@ -9,19 +9,12 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     height: 100vh;
-
-
 `
 
 const Main = styled.div`
-    width: 100%;
+    width: 100vw;
 `
 
-const Box = styled.div`
-    background: ${({theme}) => theme.darkgray};
-`
-
- 
 const Home = () => {
     return (
         <Container>
