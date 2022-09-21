@@ -20,12 +20,18 @@ const Flex = styled.div`
     margin-right: 20px;
     > *{
         margin-right: 15px;
+
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.01);
+        }
     }
 `
 const Button = styled.button`
     background: ${({theme}) => theme.purple};
     padding: 10px 18px;
     border-radius: 50px;
+
 `
 
 const DotsIco = styled(BiDotsVerticalRounded)`
