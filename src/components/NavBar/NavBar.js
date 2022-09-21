@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 20px 0px;
-
+    border-right: 1px solid ${({theme}) => theme.lightergray};
 `
 
 const Container = styled.div`
