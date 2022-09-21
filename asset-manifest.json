@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/kanban_task_management/static/js/main.06546087.js",
+    "main.js": "/kanban_task_management/static/js/main.2092c590.js",
     "index.html": "/kanban_task_management/index.html",
-    "main.06546087.js.map": "/kanban_task_management/static/js/main.06546087.js.map"
+    "main.2092c590.js.map": "/kanban_task_management/static/js/main.2092c590.js.map"
   },
   "entrypoints": [
-    "static/js/main.06546087.js"
+    "static/js/main.2092c590.js"
   ]
 }
