@@ -114,8 +114,6 @@ const Subtasks = styled.h4`
 `
 
 const Task = ({task}) => {
-    console.log(task.task.subtasks.length)
-
     return (
         <TaskStyled>
             <TaskName>

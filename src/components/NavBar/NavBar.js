@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import {useContext} from "react"
+import {ThemeContext} from "styled-components"
 import {TbLayoutBoardSplit} from "react-icons/tb"
 import {BsFillSunFill, BsFillMoonStarsFill} from "react-icons/bs"
 import {AiFillEyeInvisible} from "react-icons/ai"
@@ -90,39 +92,6 @@ const Ico = styled(TbLayoutBoardSplit)`
 
 
 
-const ThemeChangerContainer = styled.div`
-    background: ${({theme}) => theme.darkgray};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > * {
-        margin: 10px ;
-    }
-`
-const SunIco = styled(BsFillSunFill)``
-
-const MoonIco = styled(BsFillMoonStarsFill)``
-
-const ToggleContainer = styled.div`
-    background: ${({theme}) => theme.purple};
-    width: 30px;
-    height: 15px;
-    border-radius: 10px;
-
-    &:hover{
-        cursor: pointer;
-    }
-`
-
-const Toggle = styled.div`
-    background: white;
-    height: 99%;
-    width: 49%;
-    border-radius: 50px;
-
-    transform: translateX(100%);
-`
 const Settings = styled.div`
     margin: 0px 20px;
 
@@ -184,21 +153,67 @@ const NavBar = () => {
             </Container>
 
             <Settings>
-            <ThemeChangerContainer>
-                <SunIco/>
-                <ToggleContainer>
-                    <Toggle />
-                </ToggleContainer>
-                <MoonIco/>
-            </ThemeChangerContainer>
+
+                <ThemeToggle />
 
                 <SideBarToggleContainer>
                     <EyeIco />
                     <SideBarToggle>Hide sidebar</SideBarToggle>
                 </SideBarToggleContainer>
+
+
             </Settings>
 
         </Wrapper>
+    )
+}
+
+const ThemeChangerContainer = styled.div`
+    background: ${({theme}) => theme.darkgray};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > * {
+        margin: 10px ;
+    }
+`
+
+const SunIco = styled(BsFillSunFill)``
+
+const MoonIco = styled(BsFillMoonStarsFill)``
+
+const ToggleContainer = styled.div`
+    background: ${({darkTheme, theme}) => theme.purple};
+    opacity: ${({darkTheme, theme}) => darkTheme ? "0.8" : "0.2"};
+    width: 30px;
+    height: 15px;
+    border-radius: 10px;
+
+    &:hover{
+        cursor: pointer;
+    }
+`
+
+const Toggle = styled.div`
+    background: white;
+    height: 99%;
+    width: 49%;
+    border-radius: 50px;
+
+    transform: ${({darkTheme}) => darkTheme ? "translateX(100%)" : "translateX(0%)"};
+`
+const ThemeToggle = () => {
+    const {toggleTheme, darkTheme} = useContext(ThemeContext)
+
+    return (
+        <ThemeChangerContainer>
+            <SunIco/>
+            <ToggleContainer darkTheme={darkTheme} onClick={() => toggleTheme()}>
+                <Toggle darkTheme={darkTheme}/>
+            </ToggleContainer>
+            <MoonIco/>
+        </ThemeChangerContainer>
     )
 }
 
