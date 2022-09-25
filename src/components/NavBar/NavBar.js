@@ -15,7 +15,6 @@ const NavBar = () => {
                 </TitleContainer>
                 <SubTitle>All boards (4)</SubTitle>
 
-
                 <BoardContainer current>
                     <Ico />
                     <Board>Platform Launch </Board>
