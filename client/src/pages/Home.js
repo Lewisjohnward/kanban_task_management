@@ -3,6 +3,8 @@ import Header from "../components/Header/Header"
 import NavBar from "../components/NavBar/NavBar"
 import TaskGrid from "../components/TaskGrid/TaskGrid"
 import data from "../data/dummy.js"
+import {Modal} from "../components/Modal/Modal"
+import {CreateNewBoard} from "../components/NewBoard/NewBoard"
 
 
 const Container = styled.div`
@@ -17,13 +19,20 @@ const Main = styled.div`
 
 const Home = () => {
     return (
-        <Container>
-            <NavBar />
-            <Main>
-                <Header data={data[0]}/>
-                <TaskGrid data={data[0]}/>
-            </Main>
-        </Container>
+
+        <>
+            <Modal>
+                <CreateNewBoard />
+            </Modal>
+
+            <Container>
+                <NavBar />
+                <Main>
+                    <Header data={data[0]}/>
+                    <TaskGrid data={data[0]}/>
+                </Main>
+            </Container>
+        </>
 
     )
 }

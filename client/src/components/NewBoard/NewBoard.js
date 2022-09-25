@@ -1,8 +1,5 @@
 import {useState} from "react"
 import styled from "styled-components"
-import ReactDOM from "react-dom"
-
-const modalPlaceholderElement = document.getElementById("modal-placeholder")
 
 const Wrapper = styled.div`
     position: absolute;
@@ -15,83 +12,113 @@ const Wrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 99;
 `
 
 
 const Container = styled.div`
-    padding: 20px 35px;
+    height: 200px;
+    width: 350px;
+    background: ${({theme}) => theme.lightgray};
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background: white;
     border-radius: 5px;
+
+    padding: 20px 50px;
 
     > * {
         margin-bottom: 15px;
     }
 `
 const Title = styled.h1`
-    color: ${({theme}) => theme.navy};
-    font-size: 1em;
+    font-size: 1.3em;
 `
 
 
-const Flex = styled.div`
-    width: 100%;
+const InputContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    > * {
+        margin-bottom: 8px;
+    }
 `
+
+const InputLabel = styled.div`
+    font-weight: 400;
+`
+
+const Input = styled.input`
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: ${({theme, userInput}) => userInput ? "white" : theme.lightergray};
+    border: 1px solid ${({theme}) => theme.lightergray};
+    font-weight: 600;
+
+    &:focus{
+        color: white;
+    }
+`
+
 const Button = styled.button`
-    background: ${({theme}) => theme.silver};
-    color: ${({theme}) => theme.navy};
-    padding: 0.6em 2.1em;
-    font-weight: bold;
-    border-radius: 2em;
+    background: ${({theme}) => theme.purple};
+    padding: 5px 10px;
+    border-radius: 10px;
 
     &:hover{
         cursor: pointer;
     }
-
+    &:active{
+        transform: scale(1.04);
+    }
 `
 
-const RestartButton = styled(Button)`
-    background: ${({theme}) => theme.orange};
-    color: white;
-`
-
-
-
-export const NewBoard = ({handleRestartGame, setConfirmNewGame, confirmNewGame, confirmRestart, setConfirmRestart, setInitGame}) => {
-    if(confirmRestart === false && confirmNewGame === false) return null
-
-    return ReactDOM.createPortal(
-        <Component 
-            handleRestartGame={handleRestartGame}
-            setConfirmRestart={setConfirmRestart}
-            setConfirmNewGame={setConfirmNewGame}
-            confirmNewGame={confirmNewGame}
-            setInitGame={setInitGame}
-        />
-        , modalPlaceholderElement
-    )
-}
-
-const Component = () => {
+export const CreateNewBoard = () => {
+    const [placeHolder, setPlaceHolder] = useState("e.g. Roadmap")
     return (
         <Wrapper>
             <Container>
                 <Title>
-                    Are you sure you want to {confirmNewGame ? "start a new game" : "restart"}?
+                    Create new board!
                 </Title>
-                <Flex>
-                    <RestartButton onClick={() => handleRestart()}>{ confirmNewGame ? "new game" : "restart" }</RestartButton>
-                    <Button onClick={() => handleCancel()}>Cancel</Button>
-                </Flex>
+                <InputContainer>
+                    <InputLabel>
+                        Board name
+                    </InputLabel>
+                    <StyledInput placeholder={"e.g. Roadmap"} />
+                </InputContainer>
+                <Button>
+                    Create Board
+                </Button>
+            </Container>
+        </Wrapper>
+    )
+}
+
+const StyledInput = ({placeholder}) => {
+    const [input, setInput] = useState("")
+    const [userInput, setUserInput] = useState(false)
+
+    const handleChange = (e) => {
+        setUserInput(true)
+        setInput(e.target.value)
+    }
+
+    return (
+        <Input 
+            userInput={userInput}
+            placeholder={placeholder}
+            value={input}
+            onChange={(e) => handleChange(e)}
+        />
+    )
+}
+
+export const CreateTask = () => {
+    return (
+        <Wrapper>
+            <Container>
             </Container>
         </Wrapper>
     )

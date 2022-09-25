@@ -21,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
     button{
         color: ${({theme}) => theme.white};
     }
+    input{
+        background: none;
+    }
 `
 
 export default GlobalStyle
