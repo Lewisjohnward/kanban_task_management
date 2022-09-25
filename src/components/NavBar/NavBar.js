@@ -1,123 +1,9 @@
+import {useState} from "react"
 import styled from "styled-components"
 import {useContext} from "react"
 import {ThemeContext} from "styled-components"
-import {TbLayoutBoardSplit} from "react-icons/tb"
-import {BsFillSunFill, BsFillMoonStarsFill} from "react-icons/bs"
-import {AiFillEyeInvisible} from "react-icons/ai"
+import {Wrapper, Container, TitleContainer, Ico, Title, SubTitle, BoardContainer, Board, NewBoardContainer, Toggles, ThemeChangerContainer, SunIco, ToggleContainer, Toggle, MoonIco} from "./NavBar.styles.js"
 
-
-const Wrapper = styled.div`
-    width: 300px;
-    background: ${({theme}) => theme.lightgray};
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 0px;
-    border-right: 1px solid ${({theme}) => theme.whiteOpac};
-`
-
-const Container = styled.div`
-    padding: 10px 15px 0px 0px;
-
-    > * {
-        padding-left: 20px;
-    }
-`
-  
-const TitleContainer = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-
-    > * {
-        margin-right: 10px;
-    }
-`
-
-const Title = styled.h1`
-    font-size: 1.5em;
-    font-weight: 900;
-`
-
-const SubTitle = styled.h2`
-    margin-bottom: 10px;
-
-    font-size: 1em;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.7;
-
-`
-
-const hoverTransition = `
-    &:hover{
-        cursor: pointer;
-        transform: translateX(5px);
-        transition: all 0.1s;
-    }
-`
-
-const BoardContainer = styled.div`
-    display: flex;
-    align-items: center;
-
-    background: ${({current, theme}) => current ? theme.purple : "none"};
-    border-radius: 0px 25px 25px 0px;
-        
-    padding: 10px 0px 10px 20px;
-
-    > * {
-        margin-right: 10px;
-    }
-
-    ${({current}) => !current && hoverTransition}
-
-`
-
-
-const Board = styled.h3`
-    font-size: 1em;
-    padding-right: 10px;
-`
-
-const NewBoardContainer = styled(BoardContainer)`
-    color: ${({theme}) => theme.purple};
-`
-
-const Ico = styled(TbLayoutBoardSplit)`
-
-`
-
-
-
-const Settings = styled.div`
-    margin: 0px 20px;
-
-    > * {
-        margin-bottom: 10px;
-    }
-`
-
-const SideBarToggleContainer = styled.div`
-    display: flex;
-    align-items: center;
-    > * {
-        margin-right: 10px;
-    }
-
-    &:hover{
-        cursor: pointer;
-    }
-`
-
-const SideBarToggle = styled.div`
-
-`
-const EyeIco = styled(AiFillEyeInvisible)`
-    
-`
 
 const NavBar = () => {
     return (
@@ -152,57 +38,16 @@ const NavBar = () => {
 
             </Container>
 
-            <Settings>
+            <Toggles>
 
                 <ThemeToggle />
 
-                <SideBarToggleContainer>
-                    <EyeIco />
-                    <SideBarToggle>Hide sidebar</SideBarToggle>
-                </SideBarToggleContainer>
-
-
-            </Settings>
+            </Toggles>
 
         </Wrapper>
     )
 }
 
-const ThemeChangerContainer = styled.div`
-    background: ${({theme}) => theme.darkgray};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > * {
-        margin: 10px ;
-    }
-`
-
-const SunIco = styled(BsFillSunFill)``
-
-const MoonIco = styled(BsFillMoonStarsFill)``
-
-const ToggleContainer = styled.div`
-    background: ${({darkTheme, theme}) => theme.purple};
-    opacity: ${({darkTheme, theme}) => darkTheme ? "0.8" : "0.2"};
-    width: 30px;
-    height: 15px;
-    border-radius: 10px;
-
-    &:hover{
-        cursor: pointer;
-    }
-`
-
-const Toggle = styled.div`
-    background: white;
-    height: 99%;
-    width: 49%;
-    border-radius: 50px;
-
-    transform: ${({darkTheme}) => darkTheme ? "translateX(100%)" : "translateX(0%)"};
-`
 const ThemeToggle = () => {
     const {toggleTheme, darkTheme} = useContext(ThemeContext)
 
