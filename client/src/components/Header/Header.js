@@ -39,14 +39,14 @@ const DotsIco = styled(BiDotsVerticalRounded)`
 `
 
 
-const Header = ({data}) => {
+const Header = ({data, setAddNewTask}) => {
     return (
         <Container>
             <Board>
                 {data.board}
             </Board>
             <Flex>
-                <Button>+ Add new task</Button>
+                <Button onClick={() => setAddNewTask(true)}>+ Add new task</Button>
                 <DotsIco />
             </Flex>
         </Container>

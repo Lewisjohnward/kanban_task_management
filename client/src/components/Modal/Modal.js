@@ -6,7 +6,7 @@ const modalPlaceholderElement = document.getElementById("modal-placeholder")
 
 export const Modal = ({children}) => {
     return ReactDOM.createPortal(
-        children
+            children
         , modalPlaceholderElement
     )
 }

@@ -1,6 +1,6 @@
 import {useState} from "react"
 import styled from "styled-components"
-import {ImCancelCircle} from "react-icons/im"
+import {XIco} from "../../globalstyles/styles"
 
 const Wrapper = styled.div`
     position: absolute;
@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 
     z-index: 99;
 `
-
 
 const Container = styled.div`
     position: relative;
@@ -73,17 +72,6 @@ const Button = styled.button`
     }
     &:active{
         transform: scale(1.04);
-    }
-`
-
-const XIco = styled(ImCancelCircle)`
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-
-    &:hover{
-        cursor: pointer;
     }
 `
 

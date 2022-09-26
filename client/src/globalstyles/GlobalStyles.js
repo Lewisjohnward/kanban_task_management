@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     button{
         color: ${({theme}) => theme.white};
     }
-    input{
+    input, textarea{
         background: none;
     }
 `
