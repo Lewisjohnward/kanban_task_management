@@ -1,5 +1,6 @@
 import {useState} from "react"
 import styled from "styled-components"
+import {ImCancelCircle} from "react-icons/im"
 
 const Wrapper = styled.div`
     position: absolute;
@@ -19,6 +20,7 @@ const Wrapper = styled.div`
 
 
 const Container = styled.div`
+    position: relative;
     height: 200px;
     width: 350px;
     background: ${({theme}) => theme.lightgray};
@@ -74,11 +76,23 @@ const Button = styled.button`
     }
 `
 
-export const CreateNewBoard = () => {
+const XIco = styled(ImCancelCircle)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+
+    &:hover{
+        cursor: pointer;
+    }
+`
+
+export const CreateNewBoard = ({setCreateNewBoard}) => {
     const [placeHolder, setPlaceHolder] = useState("e.g. Roadmap")
     return (
         <Wrapper>
             <Container>
+                <XIco onClick={() => setCreateNewBoard(false)}/>
                 <Title>
                     Create new board!
                 </Title>
@@ -112,14 +126,5 @@ const StyledInput = ({placeholder}) => {
             value={input}
             onChange={(e) => handleChange(e)}
         />
-    )
-}
-
-export const CreateTask = () => {
-    return (
-        <Wrapper>
-            <Container>
-            </Container>
-        </Wrapper>
     )
 }

@@ -5,7 +5,7 @@ import {ThemeContext} from "styled-components"
 import {Wrapper, Container, TitleContainer, Ico, Title, SubTitle, BoardContainer, Board, NewBoardContainer, Toggles, ThemeChangerContainer, SunIco, ToggleContainer, Toggle, MoonIco} from "./NavBar.styles.js"
 
 
-const NavBar = () => {
+const NavBar = ({setCreateNewBoard}) => {
     return (
         <Wrapper>
             <Container>
@@ -30,7 +30,7 @@ const NavBar = () => {
                     <Board>RoadMap</Board>
                 </BoardContainer>
 
-                <NewBoardContainer>
+                <NewBoardContainer onClick={() => setCreateNewBoard(true)}>
                     <Ico />
                     <Board>+ Create New Board</Board>
                 </NewBoardContainer>

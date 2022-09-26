@@ -1,3 +1,4 @@
+import {useState} from "react"
 import styled from "styled-components"
 import Header from "../components/Header/Header"
 import NavBar from "../components/NavBar/NavBar"
@@ -5,6 +6,7 @@ import TaskGrid from "../components/TaskGrid/TaskGrid"
 import data from "../data/dummy.js"
 import {Modal} from "../components/Modal/Modal"
 import {CreateNewBoard} from "../components/NewBoard/NewBoard"
+import {AddNewTask} from "../components/NewTask/NewTask"
 
 
 const Container = styled.div`
@@ -18,15 +20,19 @@ const Main = styled.div`
 `
 
 const Home = () => {
+    const [createNewBoard, setCreateNewBoard] = useState(false)
+    const [addNewTask, setAddNewTask] = useState(true)
+
     return (
 
         <>
             <Modal>
-                <CreateNewBoard />
+                { createNewBoard && <CreateNewBoard setCreateNewBoard={setCreateNewBoard} /> }
+                { addNewTask && <AddNewTask setCreateNewBoard={setCreateNewBoard} /> }
             </Modal>
 
             <Container>
-                <NavBar />
+                <NavBar setCreateNewBoard={setCreateNewBoard} />
                 <Main>
                     <Header data={data[0]}/>
                     <TaskGrid data={data[0]}/>
