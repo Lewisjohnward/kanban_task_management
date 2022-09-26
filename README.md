@@ -21,6 +21,10 @@ Welcome 👋! A task management app with a light/dark mode toggle.
 ### Screenshot
 
 ###TODO
+- [ ] Put modal components in seperate folder
+- [ ] Style add new task
+- [ ] style add column
+- [ ] Finish back end logic
 
 
 ## My process
