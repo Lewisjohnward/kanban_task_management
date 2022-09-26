@@ -21,7 +21,7 @@ const Main = styled.div`
 
 const Home = () => {
     const [createNewBoard, setCreateNewBoard] = useState(false)
-    const [addNewTask, setAddNewTask] = useState(true)
+    const [addNewTask, setAddNewTask] = useState(false)
 
     return (
 
