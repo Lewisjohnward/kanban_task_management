@@ -27,6 +27,19 @@ const Home = () => {
     const [addNewColumn, setAddNewColumn] = useState(false)
     const [taskDetailed, setTaskDetailed] = useState(true)
 
+
+    fetch
+    (
+        "http://localhost:5000/api/boards/", 
+        {
+            method: 'POST',
+            cache: 'no-cache' ,
+            body: JSON.stringify({username: "lewis"})
+        }
+    )
+        .then(res => res.json())
+        .then(data => console.log(data))
+
     return (
 
         <>

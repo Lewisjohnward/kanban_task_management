@@ -5,7 +5,7 @@ const Board = require("../models/Board")
 //GET BOARDS
 exports.getBoards = async (req, res, next) => {
     const {username} = req.body
-
+    console.log(req)
     try {
         const board = await Board.find({username})
         res.send(board)

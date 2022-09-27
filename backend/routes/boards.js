@@ -13,7 +13,7 @@ const {
 } = require("../controllers/boards")
 
 
-router.route("/").get(getBoards)  
+router.route("/").post(getBoards)  
 
 router.route("/addboard").post(addBoard)  
 router.route("/editboard").post(editBoard)
