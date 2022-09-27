@@ -2,13 +2,13 @@ import {Container, AddNewColumn, Text, ColumnStyled, ColumnHeader, Dot, ColumnNa
 
 
 
-const TaskGrid = ({data}) => {
+const TaskGrid = ({data, setAddNewColumn, setTaskDetailed}) => {
     const {columns} = data
     return (
         <>
             <Container>
-                {columns.map(column => <Column column={column} />)}
-                <AddNewColumn>
+                {columns.map(column => <Column column={column} setTaskDetailed={setTaskDetailed} />)}
+                <AddNewColumn onClick={() => setAddNewColumn(true)}>
                     <Text>+ New Column</Text>
                 </AddNewColumn>
             </Container>
@@ -18,7 +18,7 @@ const TaskGrid = ({data}) => {
 
 
 
-const Column = ({column}) => {
+const Column = ({column, setTaskDetailed}) => {
     const tasks = column.tasks.length
     return (
         <ColumnStyled>
@@ -26,15 +26,15 @@ const Column = ({column}) => {
                 <Dot color={column.color}/>
                 <ColumnName>{column.column}</ColumnName>
             </ColumnHeader>
-            {column.tasks.map(task => <Task task={task} />)}
+            {column.tasks.map(task => <Task task={task} setTaskDetailed={setTaskDetailed} />)}
         </ColumnStyled>
     )
 }
 
 
-const Task = ({task}) => {
+const Task = ({task, setTaskDetailed}) => {
     return (
-        <TaskStyled>
+        <TaskStyled onClick={() => setTaskDetailed(true)}>
             <TaskName>
                 {task.task.name}
             </TaskName>

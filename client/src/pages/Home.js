@@ -7,6 +7,8 @@ import data from "../data/dummy.js"
 import {Modal} from "../components/Modal/Modal"
 import {CreateNewBoard} from "../components/NewBoard/NewBoard"
 import {AddNewTask} from "../components/AddNewTask/AddNewTask"
+import {NewColumn} from "../components/NewColumn/NewColumn"
+import {TaskDetailed} from "../components/TaskDetailed/TaskDetailed"
 
 
 const Container = styled.div`
@@ -22,6 +24,8 @@ const Main = styled.div`
 const Home = () => {
     const [createNewBoard, setCreateNewBoard] = useState(false)
     const [addNewTask, setAddNewTask] = useState(false)
+    const [addNewColumn, setAddNewColumn] = useState(false)
+    const [taskDetailed, setTaskDetailed] = useState(true)
 
     return (
 
@@ -29,13 +33,15 @@ const Home = () => {
             <Modal>
                 { createNewBoard && <CreateNewBoard setCreateNewBoard={setCreateNewBoard} /> }
                 { addNewTask && <AddNewTask setAddNewTask={setAddNewTask} /> }
+                { addNewColumn && <NewColumn setAddNewColumn={setAddNewColumn} /> }
+                { taskDetailed && <TaskDetailed setTaskDetailed={setTaskDetailed} /> }
             </Modal>
 
             <Container>
                 <NavBar setCreateNewBoard={setCreateNewBoard} />
                 <Main>
                     <Header data={data[0]} setAddNewTask={setAddNewTask} />
-                    <TaskGrid data={data[0]}/>
+                    <TaskGrid setTaskDetailed={setTaskDetailed} setAddNewColumn={setAddNewColumn} data={data[0]}/>
                 </Main>
             </Container>
         </>
