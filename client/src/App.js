@@ -18,9 +18,9 @@ const darkerTheme = {
   
 const lighterTheme = {
     white: "#000000",
-    darkgray: "#3b3b3b",
-    lightgray: "#494949",
-    lightergray: "#888888",
+    darkgray: "#DDDDDD",
+    lightgray: "#FFFFFF",
+    lightergray: "#EEEEEE",
     purple: "#8c68ed",
     blue: "#9cf0f7",
     green: "#5bf5a3",

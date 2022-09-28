@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     display: flex;
-    color: white;
+    color: ${({theme}) => theme.white};
     height: 90%;
     margin-top: 10px;
     margin-left: 20px;
