@@ -10,6 +10,8 @@ import {AddNewTask} from "../components/AddNewTask/AddNewTask"
 import {NewColumn} from "../components/NewColumn/NewColumn"
 import {TaskDetailed} from "../components/TaskDetailed/TaskDetailed"
 
+import {UseGetBoards} from "../utils/fetch"
+
 
 const Container = styled.div`
     display: flex;
@@ -27,26 +29,9 @@ const Home = () => {
     const [addNewColumn, setAddNewColumn] = useState(false)
     const [taskDetailed, setTaskDetailed] = useState(false)
 
-    const [boardData, setBoardData] = useState(null)
-    const [currentBoard, setCurrentBoard] = useState(null)
+    const [currentBoard, setCurrentBoard] = useState(0)
 
-    useEffect(() => {
-        fetch
-        (
-            "http://localhost:5000/api/boards/", 
-            {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                cache: 'no-cache' ,
-                body: JSON.stringify({username: "lewis"})
-            }
-        )
-            .then(res => res.json())
-            .then(data => setBoardData(data))
-    }, [])
+    const boardData = UseGetBoards()
 
     if(!boardData) return null
 
