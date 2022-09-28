@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import styled from "styled-components"
 import Header from "../components/Header/Header"
 import NavBar from "../components/NavBar/NavBar"
@@ -25,20 +25,27 @@ const Home = () => {
     const [createNewBoard, setCreateNewBoard] = useState(false)
     const [addNewTask, setAddNewTask] = useState(false)
     const [addNewColumn, setAddNewColumn] = useState(false)
-    const [taskDetailed, setTaskDetailed] = useState(true)
+    const [taskDetailed, setTaskDetailed] = useState(false)
 
 
-    fetch
-    (
-        "http://localhost:5000/api/boards/", 
-        {
-            method: 'POST',
-            cache: 'no-cache' ,
-            body: JSON.stringify({username: "lewis"})
-        }
-    )
-        .then(res => res.json())
-        .then(data => console.log(data))
+    useEffect(() => {
+        fetch
+        (
+            "http://localhost:5000/api/boards/", 
+            {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                cache: 'no-cache' ,
+                body: JSON.stringify({username: "lewis"})
+            }
+        )
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }, [])
+
 
     return (
 

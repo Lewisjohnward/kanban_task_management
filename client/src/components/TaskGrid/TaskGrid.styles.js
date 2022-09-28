@@ -29,6 +29,7 @@ export const AddNewColumn = styled.div`
 `
 
 export const Text = styled.div`
+    font-weight: 600;
 `
 export const ColumnStyled = styled.div`
 `
