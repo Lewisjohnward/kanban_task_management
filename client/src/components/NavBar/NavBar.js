@@ -5,7 +5,8 @@ import {ThemeContext} from "styled-components"
 import {Wrapper, Container, TitleContainer, Ico, Title, SubTitle, BoardContainer, Board, NewBoardContainer, Toggles, ThemeChangerContainer, SunIco, ToggleContainer, Toggle, MoonIco} from "./NavBar.styles.js"
 
 
-const NavBar = ({setCreateNewBoard}) => {
+const NavBar = ({boardData, setCreateNewBoard, currentBoard, setCurrentBoard}) => {
+    const numberOfBoards = boardData.length
     return (
         <Wrapper>
             <Container>
@@ -13,22 +14,16 @@ const NavBar = ({setCreateNewBoard}) => {
                     <Ico />
                     <Title>Kanban</Title>
                 </TitleContainer>
-                <SubTitle>All boards (4)</SubTitle>
-
-                <BoardContainer current>
-                    <Ico />
-                    <Board>Platform Launch </Board>
-                </BoardContainer>
-
-                <BoardContainer>
-                    <Ico />
-                    <Board>Marketing Plan</Board>
-                </BoardContainer>
-
-                <BoardContainer>
-                    <Ico />
-                    <Board>RoadMap</Board>
-                </BoardContainer>
+                <SubTitle>All boards ({numberOfBoards})</SubTitle>
+                {boardData.map((board, i) => (
+                    <BoardContainer 
+                        onClick={() => setCurrentBoard(i)}
+                        current={currentBoard === i}
+                    >
+                        <Ico />
+                        <Board>{board.board}</Board>
+                    </BoardContainer>
+                ))}
 
                 <NewBoardContainer onClick={() => setCreateNewBoard(true)}>
                     <Ico />

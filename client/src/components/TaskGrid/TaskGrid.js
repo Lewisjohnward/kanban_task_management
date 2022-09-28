@@ -24,7 +24,7 @@ const Column = ({column, setTaskDetailed}) => {
         <ColumnStyled>
             <ColumnHeader>
                 <Dot color={column.color}/>
-                <ColumnName>{column.column}</ColumnName>
+                <ColumnName>{column.name}</ColumnName>
             </ColumnHeader>
             {column.tasks.map(task => <Task task={task} setTaskDetailed={setTaskDetailed} />)}
         </ColumnStyled>

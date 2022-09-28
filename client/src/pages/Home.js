@@ -27,6 +27,8 @@ const Home = () => {
     const [addNewColumn, setAddNewColumn] = useState(false)
     const [taskDetailed, setTaskDetailed] = useState(false)
 
+    const [boardData, setBoardData] = useState(null)
+    const [currentBoard, setCurrentBoard] = useState(null)
 
     useEffect(() => {
         fetch
@@ -43,9 +45,12 @@ const Home = () => {
             }
         )
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setBoardData(data))
     }, [])
 
+    if(!boardData) return null
+
+    console.log(boardData)
 
     return (
 
@@ -58,10 +63,22 @@ const Home = () => {
             </Modal>
 
             <Container>
-                <NavBar setCreateNewBoard={setCreateNewBoard} />
+                <NavBar 
+                    setCreateNewBoard={setCreateNewBoard} 
+                    setCurrentBoard={setCurrentBoard}
+                    currentBoard={currentBoard}
+                    boardData={boardData}
+                />
                 <Main>
-                    <Header data={data[0]} setAddNewTask={setAddNewTask} />
-                    <TaskGrid setTaskDetailed={setTaskDetailed} setAddNewColumn={setAddNewColumn} data={data[0]}/>
+                    <Header 
+                        data={boardData[currentBoard]}
+                        setAddNewTask={setAddNewTask}
+                    />
+                    <TaskGrid
+                        setTaskDetailed={setTaskDetailed}
+                        setAddNewColumn={setAddNewColumn}
+                        data={boardData[currentBoard]}
+                    />
                 </Main>
             </Container>
         </>
